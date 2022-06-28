@@ -50,9 +50,9 @@ def get_audio():
     with sr.Microphone() as source: 
 
         print("Listening") 
-        playsound("D:\final_project\GUI reff\python-Virtual-Assistant-with-GUI\assistant_on.wav")
+        playsound(r"D:\final_project\GUI reff\python-Virtual-Assistant-with-GUI\assistant_on.wav")
         audio = r.listen(source, phrase_time_limit = 3) 
-        playsound("D:\final_project\GUI reff\python-Virtual-Assistant-with-GUI\assistant_off.wav")
+        playsound(r"D:\final_project\GUI reff\python-Virtual-Assistant-with-GUI\assistant_off.wav")
         print("Stop.") 
         
     try: 
