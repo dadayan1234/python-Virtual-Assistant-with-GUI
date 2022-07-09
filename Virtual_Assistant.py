@@ -11,12 +11,13 @@ import pyjokes                     #For some really bad jokes
 from playsound import playsound    #To playsound
 import keyboard                    #To get keyboard
   
-name_file = open("Assistant_name", "r")
+name_file = open(r"D:\final_project\GUI reff\python-Virtual-Assistant-with-GUI\Assistant_name", "r")
 name_assistant = name_file.read()
 
-engine = pyttsx3.init('sapi5')  
-voices = engine.getProperty('voices')  
+engine = pyttsx3.init()  
+voices = engine.getProperty('voices') 
 engine.setProperty('voice', voices[1].id)
+engine.setProperty('rate', 170)
     
 def speak(text):
     engine.say(text)
@@ -51,7 +52,7 @@ def get_audio():
 
         print("Listening") 
         playsound(r"D:\final_project\GUI reff\python-Virtual-Assistant-with-GUI\assistant_on.wav")
-        audio = r.listen(source, phrase_time_limit = 3) 
+        audio = r.listen(source, phrase_time_limit = 1) 
         playsound(r"D:\final_project\GUI reff\python-Virtual-Assistant-with-GUI\assistant_off.wav")
         print("Stop.") 
         
@@ -210,7 +211,7 @@ def Process_audio():
 
 
             if "who made you" in statement or "who created you" in statement or "who discovered you" in statement:
-                speak("I was built by Abhhi  Sannayya")
+                speak("I was modified by Dian, Dani, and Jhingga.")
 
             
             if 'make a note' in statement:
@@ -229,7 +230,7 @@ def change_name():
 
   name_info = name.get()
 
-  file=open("Assistant_name", "w")
+  file=open(r"D:\final_project\GUI reff\python-Virtual-Assistant-with-GUI\Assistant_name", "w")
 
   file.write(name_info)
 
@@ -248,8 +249,8 @@ def change_name_window():
 
       settings_screen = Toplevel(screen)
       settings_screen.title("Settings")
-      settings_screen.geometry("300x300")
-      settings_screen.iconbitmap('app_icon.ico')
+      settings_screen.geometry("350x400")
+      settings_screen.iconbitmap(r'D:\final_project\GUI reff\python-Virtual-Assistant-with-GUI\app_icon.ico')
 
       
       name = StringVar()
@@ -276,9 +277,9 @@ def info():
 
   info_screen = Toplevel(screen)
   info_screen.title("Info")
-  info_screen.iconbitmap('app_icon.ico')
+  info_screen.iconbitmap(r'D:\final_project\GUI reff\python-Virtual-Assistant-with-GUI\app_icon.ico')
 
-  creator_label = Label(info_screen,text = "Created by Abhhi Sannayya")
+  creator_label = Label(info_screen,text = "Created by Anonymous")
   creator_label.pack()
 
   Age_label = Label(info_screen, text= " at the age of 12")
@@ -295,7 +296,7 @@ def wikipedia_screen(text):
 
   wikipedia_screen = Toplevel(screen)
   wikipedia_screen.title(text)
-  wikipedia_screen.iconbitmap('app_icon.ico')
+  wikipedia_screen.iconbitmap(r'D:\final_project\GUI reff\python-Virtual-Assistant-with-GUI\app_icon.ico')
 
   message = Message(wikipedia_screen, text= text)
   message.pack()
@@ -306,20 +307,20 @@ def main_screen():
 
       global screen
       screen = Tk()
-      screen.title(name_assistant)
-      screen.geometry("100x250")
-      screen.iconbitmap('app_icon.ico')
+      screen.title("VA Simple")
+      screen.geometry("200x300")
+      screen.iconbitmap(r'D:\final_project\GUI reff\python-Virtual-Assistant-with-GUI\app_icon.ico')
 
 
       name_label = Label(text = name_assistant,width = 300, bg = "black", fg="white", font = ("Calibri", 13))
       name_label.pack()
 
 
-      microphone_photo = PhotoImage(file = "assistant_logo.png")
+      microphone_photo = PhotoImage(file = r"D:\final_project\GUI reff\python-Virtual-Assistant-with-GUI\assistant_logo.png")
       microphone_button = Button(image=microphone_photo, command = Process_audio)
       microphone_button.pack(pady=10)
 
-      settings_photo = PhotoImage(file = "settings.png")
+      settings_photo = PhotoImage(file = r"D:\final_project\GUI reff\python-Virtual-Assistant-with-GUI\settings.png")
       settings_button = Button(image=settings_photo, command = change_name_window)
       settings_button.pack(pady=10)
        
